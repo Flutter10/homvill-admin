@@ -67,7 +67,7 @@ const LoginPage = () => {
 
         {/* Login Button */}
         <div className="flex justify-center">
-        <button className="w-[340px] bg-[#8A1538] text-white py-2 rounded-lg font-medium text-[24px]">
+        <button onClick={() => navigate("/dashboard")} className="w-[340px] bg-[#8A1538] text-white py-2 rounded-lg font-medium text-[24px]">
             Log In
         </button></div>
 

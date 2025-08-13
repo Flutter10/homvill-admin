@@ -5,7 +5,9 @@ import Signup from './components/Signup'
 import Forgot from './components/Forgot/Forgot'
 import Otpverification from './components/Forgot/Otpverification'
 import NewPassword from './components/Forgot/NewPassword'
+import AdminLayout from './components/AdminLayout'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Overview from './components/Overview'
 
 const App = () => {
   return (
@@ -17,6 +19,12 @@ const App = () => {
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/otp" element={<Otpverification />} />
         <Route path="/newpassword" element={<NewPassword />} />
+                <Route path="/dashboard" element={<AdminLayout />}>
+                 <Route index element={<Navigate to="home" replace />} />
+
+          <Route path="home" element={<Overview />} />
+                </Route>
+
         </Routes>
     </>
   )
