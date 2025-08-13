@@ -90,15 +90,15 @@ export default function AdminLayout() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Topbar */}
-        <div className="w-full bg-white h-16 border-b flex items-center justify-between px-6">
+        <div className="w-full bg-white h-16 border-b flex justify-end items-center px-6">
           {/* Search */}
-          <input
+          {/* <input
             type="text"
             placeholder="Search..."
             className="w-1/3 px-4 py-2 border rounded-lg text-sm bg-gray-50 focus:outline-none"
-          />
+          /> */}
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-end gap-4">
             {/* Notifications */}
             <div className="relative inline-block" ref={dropdownRef}>
               <button
