@@ -8,6 +8,7 @@ import NewPassword from './components/Forgot/NewPassword'
 import AdminLayout from './components/AdminLayout'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Overview from './components/Overview'
+import UsersPage from './components/Users'
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
                  <Route index element={<Navigate to="home" replace />} />
 
           <Route path="home" element={<Overview />} />
+          <Route path="users" element={<UsersPage />} />
                 </Route>
 
         </Routes>
