@@ -9,6 +9,8 @@ import AdminLayout from './components/AdminLayout'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Overview from './components/Overview'
 import UsersPage from './components/Users'
+import AuditLogs from './components/AuditLogs'
+import SubAdmin from './components/SubAdmin'
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
 
           <Route path="home" element={<Overview />} />
           <Route path="users" element={<UsersPage />} />
+          <Route path="audit-logs" element={<AuditLogs />} />
+          <Route path="sub-admin" element={<SubAdmin />} />
                 </Route>
 
         </Routes>
