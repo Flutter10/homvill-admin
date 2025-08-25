@@ -11,27 +11,31 @@ import Overview from './components/Overview'
 import UsersPage from './components/Users'
 import AuditLogs from './components/AuditLogs'
 import SubAdmin from './components/SubAdmin'
+import Properties from './components/Properties'
+import ContractsTable from './components/Contracts'
 
 const App = () => {
   return (
     <>
-    {/* <LoginPage/> */}
-     <Routes>
+      {/* <LoginPage/> */}
+      <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/otp" element={<Otpverification />} />
         <Route path="/newpassword" element={<NewPassword />} />
-                <Route path="/dashboard" element={<AdminLayout />}>
-                 <Route index element={<Navigate to="home" replace />} />
+        <Route path="/dashboard" element={<AdminLayout />}>
+          <Route index element={<Navigate to="home" replace />} />
 
           <Route path="home" element={<Overview />} />
           <Route path="users" element={<UsersPage />} />
           <Route path="audit-logs" element={<AuditLogs />} />
           <Route path="sub-admin" element={<SubAdmin />} />
-                </Route>
+          <Route path="properties" element={<Properties />} />
+          <Route path="contracts" element={<ContractsTable />} />
+        </Route>
 
-        </Routes>
+      </Routes>
     </>
   )
 }

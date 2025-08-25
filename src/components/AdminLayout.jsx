@@ -21,7 +21,7 @@ const menuItems = [
   { label: "Overview", path: "/dashboard/home", icon: <FaTachometerAlt /> },
   { label: "Users", path: "/dashboard/users", icon: <FaUserCog /> },
   { label: "Properties", path: "/dashboard/properties", icon: <FaCar /> },
-  { label: "Contacts", path: "/dashboard/contacts", icon: <FaCar /> },
+  { label: "Contracts", path: "/dashboard/contracts", icon: <FaCar /> },
   { label: "Chart", path: "/dashboard/chart", icon: <FaMoneyBill /> },
   { label: "Audit Log", path: "/dashboard/audit-logs", icon: <FaCogs /> },
   { label: "Add Sub Admin", path: "/dashboard/sub-admin", icon: <FaPlus /> },

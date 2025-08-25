@@ -1,140 +1,178 @@
-import React from "react";
-import totalUsersImg from "../components/assets/group3.svg"; // Replace with your left image
-import listedStatesImg from "../components/assets/frame.svg"; // Replace with your right image
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import { FiEdit, FiTrash } from "react-icons/fi";
+import React, { useState } from "react";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
+const ContractsTable = () => {
+  const [currentPage, setCurrentPage] = useState(1);
 
-const Dashboard = () => {
-    const stats = [
-    { title: "Earnings", value: "$23,425", change: "+20%", color: "bg-green-100", textColor: "text-green-600" },
-    { title: "Users", value: "840", change: "-20%", color: "bg-orange-100", textColor: "text-orange-600" },
-    { title: "Properties", value: "412", change: "-20%", color: "bg-pink-100", textColor: "text-pink-600" },
-    { title: "Category", value: "9", change: "-20%", color: "bg-purple-100", textColor: "text-purple-600" },
-  ];
-
-  const users = [
-    { name: "Jenny Wilson", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-    { name: "Albert Flores", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-    { name: "Marvin McKinney", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-    { name: "Sharyn Honey", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-  ];
-
-  const chartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [
-      {
-        label: "Earnings",
-        data: [5, 10, 12, 20, 25, 35, 50, 45, 60, 80, 65, 85],
-        backgroundColor: "#f9c5d1",
-        borderRadius: 6,
-      },
-    ],
-  };
-
-  const chartOptions = {
-    responsive: true,
-    plugins: { legend: { display: false } },
-    scales: {
-      y: { beginAtZero: true, ticks: { callback: (val) => `$${val}k` } },
+  const contracts = [
+    {
+      owner: "Nikolas Bendy",
+      property: "C975322",
+      category: "Plumbing Contract",
+      contact: "+1 5246 945 120",
+      contractor: "Altoni Jakob",
+      company: "ABC Construction",
     },
-  };
+    {
+      owner: "Jason Ricatti",
+      property: "C198522",
+      category: "Maintenance Contract",
+      contact: "+1 7894 945 980",
+      contractor: "Touhran Hen",
+      company: "DAISY Builder Works",
+    },
+    {
+      owner: "Freddy Dios",
+      property: "C177022",
+      category: "Electrical Contract",
+      contact: "+1 9663 845 320",
+      contractor: "Geidu Lutton",
+      company: "YUJA Construction Work",
+    },
+    {
+      owner: "Kian Caroni",
+      property: "C177032",
+      category: "Roofing Contract",
+      contact: "+1 7488 845 120",
+      contractor: "Abram Domin",
+      company: "Rodry Rocks Construction",
+    },
+    {
+      owner: "Steve Saris",
+      property: "C145322",
+      category: "Plumbing Contract",
+      contact: "+1 7788 945 320",
+      contractor: "Desiare Philips",
+      company: "STEPN Builder Works",
+    },
+    {
+      owner: "Cecila Philips",
+      property: "C874124",
+      category: "Electrical Contract",
+      contact: "+1 4589 365 320",
+      contractor: "Celani Dulce",
+      company: "ELECTRO Construction WK",
+    },
+    {
+      owner: "Lindsey Regorsard",
+      property: "C854632",
+      category: "HVAC Contract",
+      contact: "+1 8963 945 368",
+      contractor: "Botash Ahmad",
+      company: "UJS Contractor Works",
+    },
+    {
+      owner: "Galet Martin",
+      property: "C214322",
+      category: "Painting Contract",
+      contact: "+1 7788 845 380",
+      contractor: "Bilano George",
+      company: "ABC Construction",
+    },
+    {
+      owner: "Davis Delin",
+      property: "C177432",
+      category: "Landscaping Contract",
+      contact: "+1 1285 745 630",
+      contractor: "Alona Caloni",
+      company: "UPL Construction Works",
+    },
+    {
+      owner: "Harter Vaccaro",
+      property: "C186882",
+      category: "Painting Contract",
+      contact: "+1 7415 945 320",
+      contractor: "Desiare Philips",
+      company: "ASTAR Construction",
+    },
+    {
+      owner: "Miracle Westervelt",
+      property: "C110232",
+      category: "Carpentry Contract",
+      contact: "+1 9693 945 630",
+      contractor: "Rayna Baptista",
+      company: "YHUJ Construction",
+    },
+    {
+      owner: "Vaccaro Betor",
+      property: "C115032",
+      category: "Painting Contract",
+      contact: "+1 9689 945 630",
+      contractor: "Yojun John",
+      company: "RUS Construction",
+    },
+    {
+      owner: "Dulce Bator",
+      property: "C153232",
+      category: "Maintenance Contract",
+      contact: "+1 7748 945 530",
+      contractor: "Cristalfer Press",
+      company: "DTS Construction",
+    },
+  ];
+
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      {/* Top section: two images side by side */}
-     <div className="flex gap-6 mb-6">
-  {/* Total Users Card Image */}
-  <div className="flex-1 bg-white rounded-xl overflow-hidden shadow h-[270px]">
-    <img
-      src={totalUsersImg}
-      alt="Total Users"
-      className="w-full h-full object-cover"
-    />
-  </div>
-
-  {/* All Listed States Image */}
-  <div className="flex-1 bg-white rounded-xl overflow-hidden shadow h-[250px]">
-    <img
-      src={listedStatesImg}
-      alt="All Listed States"
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
-
-
-      {/* Bottom section - example placeholders */}
-       <div className="p-6 bg-white min-h-screen">
-      {/* Stats */}
-      <div className="grid grid-cols-4 gap-4">
-        {stats.map((s, i) => (
-          <div key={i} className={`p-4 border rounded-xl flex flex-col gap-1 ${s.color}`}>
-            <span className="text-gray-500 text-sm">{s.title}</span>
-            <span className="text-xl font-bold">{s.value}</span>
-            <span className={`text-xs ${s.textColor}`}>{s.change}</span>
-          </div>
-        ))}
+    <div className="p-6">
+      {/* Topbar */}
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-lg font-semibold">Contracts</h1>
+        <div className="flex gap-2">
+          <button className="bg-[#8A1538] text-white px-4 py-2 rounded-md">
+            All Partners
+          </button>
+          <button className="bg-[#8A1538] text-white px-4 py-2 rounded-md">
+            Contract Enquiries
+          </button>
+        </div>
       </div>
 
-      {/* Main content */}
-      <div className="grid grid-cols-2 gap-4 mt-6">
-        {/* New Users */}
-        <div className="border rounded-xl p-4">
-          <h3 className="font-semibold mb-4">New Users</h3>
-          <table className="w-full text-sm">
-            <thead className="text-left text-gray-500 border-b">
-              <tr>
-                <th>User Name</th>
-                <th>Date In</th>
-                <th>Email</th>
-                <th>ID</th>
-                <th></th>
+      {/* Table */}
+      <div className="overflow-x-auto border rounded-lg shadow-sm">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="bg-[#8A1538] text-white whitespace-nowrap text-left">
+              <th className="px-4 py-2">OWNER NAME</th>
+              <th className="px-4 py-2">PROPERTY ID</th>
+              <th className="px-4 py-2">CATEGORY</th>
+              <th className="px-4 py-2">OWNER CONTACT</th>
+              <th className="px-4 py-2">CONTRACTOR PERSON</th>
+              <th className="px-4 py-2">COMPANY</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contracts.map((c, i) => (
+              <tr
+                key={i}
+                className={`border-b hover:bg-gray-50 ${
+                  i % 2 === 0 ? "bg-white" : "bg-gray-100"
+                }`}
+              >
+                <td className="px-4 py-2">{c.owner}</td>
+                <td className="px-4 py-2">{c.property}</td>
+                <td className="px-4 py-2">{c.category}</td>
+                <td className="px-4 py-2">{c.contact}</td>
+                <td className="px-4 py-2">{c.contractor}</td>
+                <td className="px-4 py-2">{c.company}</td>
               </tr>
-            </thead>
-            <tbody>
-              {users.map((u, idx) => (
-                <tr key={idx} className="border-b">
-                  <td className="flex items-center gap-2 py-2">
-                    <img src={u.img} alt="" className="w-8 h-8 rounded-full" />
-                    {u.name}
-                  </td>
-                  <td>{u.date}</td>
-                  <td>{u.email}</td>
-                  <td>{u.id}</td>
-                  <td className="flex gap-2">
-                    <FiEdit className="text-gray-400 cursor-pointer" />
-                    <FiTrash className="text-red-400 cursor-pointer" />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-        {/* Chart */}
-        <div className="border rounded-xl p-4">
-          <div className="flex justify-between mb-4">
-            <h3 className="font-semibold">Earning</h3>
-            <select className="border rounded px-2 py-1 text-sm">
-              <option>Yearly</option>
-              <option>Monthly</option>
-            </select>
-          </div>
-          <Bar data={chartData} options={chartOptions} height={200} />
+      {/* Pagination */}
+      <div className="flex justify-between items-center mt-4 text-sm text-gray-600">
+        <p>Showing 1 to 13 of 412 entries</p>
+        <div className="flex gap-2">
+          <button className="px-3 py-1 border rounded-md">Previous</button>
+          <button className="px-3 py-1 border rounded-md bg-[#a90d47] text-white">
+            1
+          </button>
+          <button className="px-3 py-1 border rounded-md">2</button>
+          <button className="px-3 py-1 border rounded-md">3</button>
+          <button className="px-3 py-1 border rounded-md">Next</button>
         </div>
       </div>
-    </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default ContractsTable;

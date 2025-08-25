@@ -1,140 +1,146 @@
-import React from "react";
-import totalUsersImg from "../components/assets/group3.svg"; // Replace with your left image
-import listedStatesImg from "../components/assets/frame.svg"; // Replace with your right image
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import { FiEdit, FiTrash } from "react-icons/fi";
+import { FiPlus, FiFilter, FiDownload } from "react-icons/fi";
+import { useState } from "react";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
+const properties = [
+  {
+    listedBy: "Jasxon Mango",
+    sellerId: "51478536",
+    category: "Furnished Home",
+    price: "$120,000.00",
+    available: "RENT",
+    email: "example@gmail.com",
+    phone: "+1 7788 945 630",
+  },
+  {
+    listedBy: "Mian Gingo",
+    sellerId: "51478536",
+    category: "Studio Apartments",
+    price: "$180,000.00",
+    available: "RENT",
+    email: "example@gmail.com",
+    phone: "+1 7788 945 630",
+  },
+  {
+    listedBy: "Martin Dias",
+    sellerId: "51478536",
+    category: "Unfurnished Home",
+    price: "$200,000.00",
+    available: "RENT",
+    email: "example@gmail.com",
+    phone: "+1 7788 945 630",
+  },
+  // Add rest of the data here...
+];
 
-const Dashboard = () => {
-    const stats = [
-    { title: "Earnings", value: "$23,425", change: "+20%", color: "bg-green-100", textColor: "text-green-600" },
-    { title: "Users", value: "840", change: "-20%", color: "bg-orange-100", textColor: "text-orange-600" },
-    { title: "Properties", value: "412", change: "-20%", color: "bg-pink-100", textColor: "text-pink-600" },
-    { title: "Category", value: "9", change: "-20%", color: "bg-purple-100", textColor: "text-purple-600" },
-  ];
+const PropertyTable = () => {
+  const [activeTab, setActiveTab] = useState("rent");
 
-  const users = [
-    { name: "Jenny Wilson", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-    { name: "Albert Flores", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-    { name: "Marvin McKinney", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-    { name: "Sharyn Honey", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-  ];
-
-  const chartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [
-      {
-        label: "Earnings",
-        data: [5, 10, 12, 20, 25, 35, 50, 45, 60, 80, 65, 85],
-        backgroundColor: "#f9c5d1",
-        borderRadius: 6,
-      },
-    ],
-  };
-
-  const chartOptions = {
-    responsive: true,
-    plugins: { legend: { display: false } },
-    scales: {
-      y: { beginAtZero: true, ticks: { callback: (val) => `$${val}k` } },
-    },
-  };
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      {/* Top section: two images side by side */}
-     <div className="flex gap-6 mb-6">
-  {/* Total Users Card Image */}
-  <div className="flex-1 bg-white rounded-xl overflow-hidden shadow h-[270px]">
-    <img
-      src={totalUsersImg}
-      alt="Total Users"
-      className="w-full h-full object-cover"
-    />
-  </div>
-
-  {/* All Listed States Image */}
-  <div className="flex-1 bg-white rounded-xl overflow-hidden shadow h-[250px]">
-    <img
-      src={listedStatesImg}
-      alt="All Listed States"
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
-
-
-      {/* Bottom section - example placeholders */}
-       <div className="p-6 bg-white min-h-screen">
-      {/* Stats */}
-      <div className="grid grid-cols-4 gap-4">
-        {stats.map((s, i) => (
-          <div key={i} className={`p-4 border rounded-xl flex flex-col gap-1 ${s.color}`}>
-            <span className="text-gray-500 text-sm">{s.title}</span>
-            <span className="text-xl font-bold">{s.value}</span>
-            <span className={`text-xs ${s.textColor}`}>{s.change}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Main content */}
-      <div className="grid grid-cols-2 gap-4 mt-6">
-        {/* New Users */}
-        <div className="border rounded-xl p-4">
-          <h3 className="font-semibold mb-4">New Users</h3>
-          <table className="w-full text-sm">
-            <thead className="text-left text-gray-500 border-b">
-              <tr>
-                <th>User Name</th>
-                <th>Date In</th>
-                <th>Email</th>
-                <th>ID</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((u, idx) => (
-                <tr key={idx} className="border-b">
-                  <td className="flex items-center gap-2 py-2">
-                    <img src={u.img} alt="" className="w-8 h-8 rounded-full" />
-                    {u.name}
-                  </td>
-                  <td>{u.date}</td>
-                  <td>{u.email}</td>
-                  <td>{u.id}</td>
-                  <td className="flex gap-2">
-                    <FiEdit className="text-gray-400 cursor-pointer" />
-                    <FiTrash className="text-red-400 cursor-pointer" />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div className=" bg-gray-50">
+   <div className="w-full bg-white p-4 shadow-sm">
+      {/* Top Row */}
+      <div className="flex flex-wrap items-center justify-between gap-1">
+        
+        {/* Left: Properties + Add button */}
+        <div className="flex items-center gap-3">
+          <h1 className="text-lg font-semibold text-gray-800">Properties</h1>
+          <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100">
+            <FiPlus size={16} /> Add A New Property
+          </button>
         </div>
 
-        {/* Chart */}
-        <div className="border rounded-xl p-4">
-          <div className="flex justify-between mb-4">
-            <h3 className="font-semibold">Earning</h3>
-            <select className="border rounded px-2 py-1 text-sm">
-              <option>Yearly</option>
-              <option>Monthly</option>
-            </select>
-          </div>
-          <Bar data={chartData} options={chartOptions} height={200} />
-        </div>
+        {/* Right: Filters + Actions */}
+          {/* Tabs */}
+          <button className="px-4 py-2 rounded-md text-sm font-medium bg-gray-100 text-gray-500">
+            ALL
+          </button>
+          <button className="px-4 py-2 rounded-md text-sm font-medium bg-gray-100 text-gray-500">
+            SALE
+          </button>
+          <button className="px-4 py-2 rounded-md text-sm font-medium bg-[#800020] text-white">
+            RENT
+          </button>
+
+          {/* Filter */}
+          <button className="p-2 border border-gray-300 rounded-md hover:bg-gray-100">
+            <FiFilter size={18} className="text-[#800020]" />
+          </button>
+
+          {/* Download Dropdown */}
+          <select className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium">
+            <option>Download</option>
+            <option>Excel</option>
+            <option>PDF</option>
+          </select>
+
+          {/* Offer Raised */}
+          <button className="px-4 py-2 bg-[#800020] text-white text-sm font-medium rounded-md hover:bg-[#660019]">
+            Offer Raised
+          </button>
+
+          {/* Tours Scheduled */}
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#800020] text-white text-sm font-medium rounded-md hover:bg-[#660019]">
+            Tours Scheduled <FiDownload size={16} />
+          </button>
       </div>
+
+      {/* Bottom Row: Description */}
+      <p className="text-xs text-gray-500 mt-1">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </p>
     </div>
+
+      {/* Table */}
+      <div className="overflow-x-auto bg-white shadow rounded-lg">
+        <table className="w-full text-left border-collapse">
+          <thead className="bg-pink-100 text-pink-700">
+            <tr>
+              <th className="p-3">LISTED BY</th>
+              <th className="p-3">SELLER ID</th>
+              <th className="p-3">CATEGORY</th>
+              <th className="p-3">PRICE</th>
+              <th className="p-3">AVAILABLE TO</th>
+              <th className="p-3">EMAIL</th>
+              <th className="p-3">PHONE NUMBER</th>
+            </tr>
+          </thead>
+          <tbody>
+            {properties.map((property, index) => (
+              <tr
+                key={index}
+                className={`border-b hover:bg-pink-50 ${index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                  }`}
+              >
+                <td className="p-3">{property.listedBy}</td>
+                <td className="p-3">{property.sellerId}</td>
+                <td className="p-3">{property.category}</td>
+                <td className="p-3">{property.price}</td>
+                <td className="p-3 text-pink-600 font-semibold">
+                  {property.available}
+                </td>
+                <td className="p-3">{property.email}</td>
+                <td className="p-3">{property.phone}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Pagination */}
+      <div className="flex justify-between items-center mt-4 text-sm">
+        <p>Showing 1 to 13 of 412 entries</p>
+        <div className="flex items-center gap-2">
+          <button className="px-2 py-1 border rounded">Previous</button>
+          <button className="px-3 py-1 bg-pink-600 text-white rounded">
+            1
+          </button>
+          <button className="px-3 py-1 border rounded">2</button>
+          <button className="px-3 py-1 border rounded">3</button>
+          <button className="px-2 py-1 border rounded">Next</button>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default PropertyTable;
