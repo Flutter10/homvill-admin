@@ -55,9 +55,9 @@ export default function AdminLayout() {
   return (
     <div style={{fontFamily:'Poppins'}} className="flex h-screen font-sans">
       {/* Sidebar */}
-      <div className="w-64 bg-gray-50 border-r flex flex-col">
+      <div className="w-64 bg-gray-50 border-r border-[#8A1538] flex flex-col">
         {/* Logo */}
-        <div className="p-6 flex items-center justify-center border-b">
+        <div className="p-6 flex items-center justify-center">
           <img src={logo} alt="Logo" className="w-32" />
         </div>
 
@@ -70,18 +70,33 @@ export default function AdminLayout() {
                 : currentPath.startsWith(item.path);
 
             return (
+              // <NavLink
+              //   key={index}
+              //   to={item.path}
+              //   className={`flex items-center gap-3 px-6 py-2 text-[15px] rounded-lg transition-all ${
+              //     isActive
+              //       ? "bg-[#8A1538] text-white font-medium"
+              //       : "text-gray-700 hover:bg-gray-200"
+              //   }`}
+              // >
+              //   {item.icon}
+              //   {item.label}
+              // </NavLink>
               <NavLink
-                key={index}
-                to={item.path}
-                className={`flex items-center gap-3 px-6 py-2 text-[15px] rounded-lg transition-all ${
-                  isActive
-                    ? "bg-[#8A1538] text-white font-medium"
-                    : "text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                {item.icon}
-                {item.label}
-              </NavLink>
+  key={index}
+  to={item.path}
+  className={({ isActive }) =>
+    `flex items-center gap-3 px-6 py-2 text-[15px] rounded-lg transition-all ${
+      (isActive || currentPath.startsWith(item.path))
+        ? "bg-[#8A1538] text-white font-medium"
+        : "text-gray-700 hover:bg-gray-200"
+    }`
+  }
+>
+  {item.icon}
+  {item.label}
+</NavLink>
+
             );
           })}
         </ul>
@@ -150,7 +165,7 @@ export default function AdminLayout() {
         </div>
 
         {/* Main Dashboard */}
-        <main className="flex-1 overflow-y-auto p-6 bg-gray-100">
+        <main className="flex-1 overflow-y-auto p-6 bg-white">
           <Outlet />
         </main>
       </div>
