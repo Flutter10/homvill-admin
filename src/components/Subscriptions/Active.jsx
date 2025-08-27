@@ -93,7 +93,7 @@ export default function ActiveSubscriptions() {
       {/* Heading */}
       {/* <h2 className="text-lg font-semibold mb-1">Active Subscriptions</h2> */}
         <h2 className="text-lg font-semibold flex items-center gap-2">
-                <img onClick={() => navigate('/dashboard/subscribe')} src={nrk} className="cursor-pointer"></img> Social Links
+                <img onClick={() => navigate('/dashboard/subscribe')} src={nrk} className="cursor-pointer"></img> Active Subscriptions
             </h2>
       <p className="text-sm text-gray-500 mb-4">
         Lorem ipsum is simply dummy text of the printing and typesetting
