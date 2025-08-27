@@ -17,6 +17,11 @@ import Banners from './components/Banners/Banners'
 import Social from './components/Banners/Social'
 import New from './components/Banners/New'
 import Chat from './components/Chat'
+import Subscriptions from './components/Subscriptions/Subscribe'
+import AddSubscribe from './components/Subscriptions/AddSubscribe'
+import Active from './components/Subscriptions/Active'
+import Earning from './components/Earning/Earning'
+import UserQuery from './components/UserQuery'
 
 const App = () => {
   return (
@@ -41,6 +46,13 @@ const App = () => {
           <Route path="banners" element={<Banners />} />
           <Route path="banners/social" element={<Social />} />
           <Route path="banners/new" element={<New />} />
+          <Route path="subscribe" element={<Subscriptions />} />
+          <Route path="subscribe/addsubscribe" element={<AddSubscribe />} />
+          <Route path="subscribe/active" element={<Active />} />
+          <Route path="earning" element={<Earning />} />
+          <Route path="userquery" element={<UserQuery />} />
+
+
         </Route>
 
       </Routes>

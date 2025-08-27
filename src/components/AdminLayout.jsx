@@ -26,10 +26,10 @@ const menuItems = [
   { label: "Audit Log", path: "/dashboard/audit-logs", icon: <FaCogs /> },
   { label: "Add Sub Admin", path: "/dashboard/sub-admin", icon: <FaPlus /> },
   { label: "Banners", path: "/dashboard/banners", icon: <FaFileAlt /> },
-  { label: "Subscriptions", path: "/dashboard/subscriptions", icon: <MdOutlineSubscriptions /> },
+  { label: "Subscriptions", path: "/dashboard/subscribe", icon: <MdOutlineSubscriptions /> },
   { label: "Earning", path: "/dashboard/earning", icon: <FaMoneyBill /> },
   { label: "Promo Code", path: "/dashboard/promo-code", icon: <FaGift /> },
-  { label: "User’s Query", path: "/dashboard/user-query", icon: <FaQuestionCircle /> },
+  { label: "User’s Query", path: "/dashboard/userquery", icon: <FaQuestionCircle /> },
   { label: "Terms & Condition", path: "/dashboard/terms", icon: <FaQuestionCircle /> },
   { label: "Privacy & Policy", path: "/dashboard/privacy", icon: <FaQuestionCircle /> },
 ];
