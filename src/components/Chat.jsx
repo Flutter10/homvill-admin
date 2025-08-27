@@ -1,125 +1,126 @@
-import React from "react";
-import { FiSearch } from "react-icons/fi";
-import { SlOptionsVertical } from "react-icons/sl";
+import React, { useState } from "react";
+import { Send, Check, CheckCheck } from "lucide-react";
 
-const chats = new Array(6).fill({
-  name: "Tiya, Amit",
-  lastMsg: "Amit: Which location?",
-  time: "12:30 pm",
-});
+const ChatUI = () => {
+  const [selectedChat, setSelectedChat] = useState(0);
+  const [message, setMessage] = useState("");
+  const [chats] = useState([
+    {
+      id: 1,
+      name: "Justin Saris",
+      lastMessage: "Lorem Ipsum is simply...",
+      time: "03:00",
+      messages: [
+        { id: 1, text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", sender: "other", time: "5:02 PM" },
+        { id: 2, text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", sender: "me", time: "5:05 PM" },
+        { id: 3, text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", sender: "other", time: "6:02 PM" },
+        { id: 4, text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", sender: "me", time: "6:05 PM" },
+      ],
+    },
+    {
+      id: 2,
+      name: "Cheyenne Baptista",
+      lastMessage: "Hey, how are you?",
+      time: "02:13",
+      messages: [],
+    },
+  ]);
 
-const messages = [
-  {
-    sender: "Amit",
-    role: "driver",
-    message: "Where are you on the location",
-    time: "12:00 am",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-  },
-  {
-    sender: "Tina",
-    role: "user",
-    message: "Where are you on the location",
-    time: "12:00 am",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-  },
-  {
-    sender: "Amit",
-    role: "driver",
-    message: "Where are you on the location",
-    time: "12:00 am",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-  },
-  {
-    sender: "Tina",
-    role: "user",
-    message: "Where are you on the location",
-    time: "12:00 am",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-  },
-];
+  const sendMessage = () => {
+    if (message.trim() === "") return;
+    const updatedChats = [...chats];
+    updatedChats[selectedChat].messages.push({
+      id: Date.now(),
+      text: message,
+      sender: "me",
+      time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+    });
+    setMessage("");
+  };
 
-const LiveChatMonitoring = () => {
   return (
-    <div style={{fontFamily:'Sofia sans'}} className="p-4 bg-white rounded-md shadow">
-      <h2 className="text-[32px] font-bold text-[#121212] mb-4">Live Chat Monitoring</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Chat List */}
-        <div className="border rounded-lg col-span-1">
-          {/* Search & Tabs */}
-          <div className="p-3 border-b">
-            <div className="relative">
-              <FiSearch className="absolute top-2.5 left-3 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search"
-                className="w-full pl-10 pr-10 py-2 rounded-md border border-gray-300 text-sm focus:outline-none"
-              />
-              <button className="absolute right-2 top-2.5">
-                <SlOptionsVertical className="text-gray-500" />
-              </button>
-            </div>
-            <div className="flex mt-3">
-              <button className="text-[20px] text-black font-medium border-b-2 border-black px-2 pb-1">Live</button>
-              <button className="text-[20px] text-gray-500 ml-4">Previous</button>
-            </div>
-          </div>
+    <div className="flex h-screen bg-gray-50">
+      {/* Left Sidebar */}
+      <div className="w-1/3 border-r bg-white p-4 flex flex-col">
+        <h1 className="text-xl font-semibold mb-2">Chat</h1>
+        <input
+          type="text"
+          placeholder="Search here"
+          className="mb-4 w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
+        />
 
-          {/* Chat List Items */}
-          <div className="overflow-y-auto max-h-[400px]">
-            {chats.map((chat, index) => (
-              <div key={index} className="p-3 border-b hover:bg-gray-50 cursor-pointer">
-                <div className="flex justify-between items-center">
-                  <h4 className="font-medium text-[#000000] text-[22px]  text-sm">{chat.name}</h4>
-                  <span className="text-xs text-gray-400">{chat.time}</span>
-                </div>
-                <p className="text-xs text-gray-500">{chat.lastMsg}</p>
+        <div className="flex-1 overflow-y-auto">
+          {chats.map((chat, index) => (
+            <div
+              key={chat.id}
+              onClick={() => setSelectedChat(index)}
+              className={`flex cursor-pointer items-center justify-between rounded-lg p-3 mb-2 ${
+                selectedChat === index ? "bg-pink-100" : "hover:bg-gray-100"
+              }`}
+            >
+              <div>
+                <p className="font-medium">{chat.name}</p>
+                <p className="text-xs text-gray-500">{chat.lastMessage}</p>
               </div>
-            ))}
+              <div className="text-xs text-gray-400">{chat.time}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Right Chat Panel */}
+      <div className="flex flex-1 flex-col">
+        {/* Header */}
+        <div className="border-b bg-white p-4 flex justify-between items-center">
+          <div>
+            <p className="font-semibold">{chats[selectedChat].name}</p>
+            <p className="text-xs text-gray-500">ID: #{chats[selectedChat].id}</p>
           </div>
         </div>
 
-        {/* Chat Window */}
-        <div className="col-span-2 border rounded-lg p-4">
-          <h3 className="font-semibold text-[#000000] text-[26px] mb-4">Tina, Amit</h3>
-          <div className="space-y-4 max-h-[400px] overflow-y-auto">
-            {messages.map((msg, index) => (
-              <div key={index} className="flex gap-3 items-start">
-                <img
-                  src={msg.avatar}
-                  alt="avatar"
-                  className="w-8 h-8 rounded-full"
-                />
-                <div>
-                  <div className="text-[16px] text-black font-semibold">
-                    {msg.sender}
-                    <span className="text-xs text-gray-400 ml-2">{msg.role}</span>
-                  </div>
-                  <div
-                    className={`mt-1 px-4 py-2 rounded-md text-sm max-w-xs ${
-                      msg.role === "driver"
-                        ? "bg-gray-100 text-gray-800"
-                        : "bg-blue-50 text-gray-800"
-                    }`}
-                  >
-                    {msg.message}
-                  </div>
-                  <span className="text-xs text-gray-400 mt-1 block">{msg.time}</span>
-                </div>
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto bg-gray-50 p-4 space-y-3">
+          {chats[selectedChat].messages.map((msg) => (
+            <div
+              key={msg.id}
+              className={`flex ${msg.sender === "me" ? "justify-end" : "justify-start"}`}
+            >
+              <div
+                className={`max-w-xs rounded-lg px-4 py-2 text-sm shadow ${
+                  msg.sender === "me"
+                    ? "bg-[#8A1538] text-white rounded-tr-none"
+                    : "bg-white text-gray-800 border rounded-tl-none"
+                }`}
+              >
+                {msg.text}
+                <div className="mt-1 text-[10px] text-gray-300">{msg.time}</div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
 
-          {/* Start Chat Button */}
-          <div className="mt-4 text-right">
-            <button className=" text-black px-4 py-2 rounded-md border border-[#1D26C1] text-sm">
-              Start chat
-            </button>
-          </div>
+        {/* Input */}
+        <div className="border-t bg-white p-3 flex items-center gap-2">
+          <input
+            type="text"
+            placeholder="Type message here..."
+            className="flex-1 rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <button
+            onClick={sendMessage}
+            className="rounded-full bg-[#8A1538] p-3 text-white hover:bg-pink-700"
+          >
+            <Send size={18} />
+          </button>
+          <button className="rounded-full border p-3 text-gray-500 hover:text-gray-700">
+            <CheckCheck size={18} />
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default LiveChatMonitoring;
+export default ChatUI;

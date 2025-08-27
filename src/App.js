@@ -16,6 +16,7 @@ import ContractsTable from './components/Contracts'
 import Banners from './components/Banners/Banners'
 import Social from './components/Banners/Social'
 import New from './components/Banners/New'
+import Chat from './components/Chat'
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="sub-admin" element={<SubAdmin />} />
           <Route path="properties" element={<Properties />} />
           <Route path="contracts" element={<ContractsTable />} />
+          <Route path="chat" element={<Chat />} />
           <Route path="banners" element={<Banners />} />
           <Route path="banners/social" element={<Social />} />
           <Route path="banners/new" element={<New />} />

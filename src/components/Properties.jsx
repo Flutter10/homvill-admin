@@ -93,7 +93,7 @@ const PropertyTable = () => {
       {/* Table */}
       <div className="overflow-x-auto bg-white shadow rounded-lg">
         <table className="w-full text-left border-collapse">
-          <thead className="bg-pink-100 text-pink-700">
+          <thead className="bg-[#800020] text-white">
             <tr>
               <th className="p-3">LISTED BY</th>
               <th className="p-3">SELLER ID</th>
@@ -131,7 +131,7 @@ const PropertyTable = () => {
         <p>Showing 1 to 13 of 412 entries</p>
         <div className="flex items-center gap-2">
           <button className="px-2 py-1 border rounded">Previous</button>
-          <button className="px-3 py-1 bg-pink-600 text-white rounded">
+          <button className="px-3 py-1 bg-[#800020] text-white rounded">
             1
           </button>
           <button className="px-3 py-1 border rounded">2</button>

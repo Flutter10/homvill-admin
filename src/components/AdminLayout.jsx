@@ -22,7 +22,7 @@ const menuItems = [
   { label: "Users", path: "/dashboard/users", icon: <FaUserCog /> },
   { label: "Properties", path: "/dashboard/properties", icon: <FaCar /> },
   { label: "Contracts", path: "/dashboard/contracts", icon: <FaCar /> },
-  { label: "Chart", path: "/dashboard/chart", icon: <FaMoneyBill /> },
+  { label: "Chat", path: "/dashboard/chat", icon: <FaMoneyBill /> },
   { label: "Audit Log", path: "/dashboard/audit-logs", icon: <FaCogs /> },
   { label: "Add Sub Admin", path: "/dashboard/sub-admin", icon: <FaPlus /> },
   { label: "Banners", path: "/dashboard/banners", icon: <FaFileAlt /> },
@@ -105,7 +105,7 @@ export default function AdminLayout() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Topbar */}
-        <div className="w-full bg-white h-16 border-b flex justify-end items-center px-6">
+        <div className="w-full bg-white h-16 border-b border-[#8A1538] flex justify-end items-center px-6">
           {/* Search */}
           {/* <input
             type="text"
