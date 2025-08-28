@@ -5,7 +5,7 @@ import { Plus } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
 export default function Subscriptions() {
-      const navigate = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <div className="space-y-6">
@@ -15,9 +15,7 @@ export default function Subscriptions() {
                 <div>
                     <div className="flex items-center gap-3">
                         <h2 className="text-xl font-semibold">Subscriptions</h2>
-                        {/* <button className="flex items-center gap-2 px-4 py-2 bg-white rounded-md text-sm font-medium border shadow-sm">
-            Add A New Subscription <Plus size={16} />
-          </button> */}
+                      
                         <button onClick={() => navigate('/dashboard/subscribe/addsubscribe')} className="flex items-center gap-2 px-4 py-2 bg-white rounded-md text-sm font-medium border shadow-md
   hover:bg-[#8A1538] hover:text-white transition-colors duration-200">
                             Add A New Subscription <Plus size={16} />

@@ -134,16 +134,16 @@ const Dashboard = () => {
               <div className="p-4 bg-white shadow rounded-lg border border-[#8A1538]">
                 <div className="flex flex-col items-start">
                   <div className="bg-[#FFF2E2] p-2 rounded-lg inline-flex items-center justify-center mb-2">
-                                        <img src={head} alt="wallet" className="w-6 h-6" />
+                    <img src={head} alt="wallet" className="w-6 h-6" />
 
                   </div>
                   <p className="text-sm text-[#676767] mb-1">Users</p>
                   <div className="flex items-center gap-2">
-  <h2 className="text- font-semibold">$23,425</h2>
-  <span className="text-green-500 text-sm flex items-center gap-1">
-    ▲ 201
-  </span>
-</div>
+                    <h2 className="text- font-semibold">$23,425</h2>
+                    <span className="text-green-500 text-sm flex items-center gap-1">
+                      ▲ 201
+                    </span>
+                  </div>
 
                 </div>
               </div>
@@ -152,16 +152,16 @@ const Dashboard = () => {
               <div className="p-4 bg-white shadow rounded-lg border border-[#8A1538]">
                 <div className="flex flex-col items-start">
                   <div className="bg-[#FCE4EC] p-2 rounded-lg inline-flex items-center justify-center mb-2">
-                                        <img src={bag} alt="wallet" className="w-6 h-6" />
+                    <img src={bag} alt="wallet" className="w-6 h-6" />
 
                   </div>
                   <p className="text-sm text-[#676767] mb-1">Properties</p>
-                 <div className="flex items-center gap-2">
-  <h2 className="text- font-semibold">$23,425</h2>
-  <span className="text-green-500 text-sm flex items-center gap-1">
-    ▲ 201
-  </span>
-</div>
+                  <div className="flex items-center gap-2">
+                    <h2 className="text- font-semibold">$23,425</h2>
+                    <span className="text-green-500 text-sm flex items-center gap-1">
+                      ▲ 201
+                    </span>
+                  </div>
 
                 </div>
               </div>
@@ -170,7 +170,7 @@ const Dashboard = () => {
               <div className="p-4 bg-white shadow rounded-lg border border-[#8A1538]">
                 <div className="flex flex-col items-start">
                   <div className="bg-[#EDE7F6] p-2 rounded-lg inline-flex items-center justify-center mb-2">
-                                                            <img src={table} alt="wallet" className="w-6 h-6" />
+                    <img src={table} alt="wallet" className="w-6 h-6" />
 
                   </div>
                   <p className="text-sm text-[#676767] mb-1">Category</p>

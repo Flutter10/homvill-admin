@@ -28,10 +28,13 @@ const menuItems = [
   { label: "Banners", path: "/dashboard/banners", icon: <FaFileAlt /> },
   { label: "Subscriptions", path: "/dashboard/subscribe", icon: <MdOutlineSubscriptions /> },
   { label: "Earning", path: "/dashboard/earning", icon: <FaMoneyBill /> },
-  { label: "Promo Code", path: "/dashboard/promo-code", icon: <FaGift /> },
+  { label: "Promo Code", path: "/dashboard/promocode", icon: <FaGift /> },
+  { label: "Reviews", path: "/dashboard/review", icon: <FaGift /> },
   { label: "User’s Query", path: "/dashboard/userquery", icon: <FaQuestionCircle /> },
   { label: "Terms & Condition", path: "/dashboard/terms", icon: <FaQuestionCircle /> },
   { label: "Privacy & Policy", path: "/dashboard/privacy", icon: <FaQuestionCircle /> },
+  { label: "Push Notification", path: "/dashboard/push", icon: <FaQuestionCircle /> },
+  { label: "Help & Sipport", path: "/dashboard/support", icon: <FaQuestionCircle /> },
 ];
 
 export default function AdminLayout() {

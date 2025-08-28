@@ -22,7 +22,14 @@ import AddSubscribe from './components/Subscriptions/AddSubscribe'
 import Active from './components/Subscriptions/Active'
 import Earning from './components/Earning/Earning'
 import UserQuery from './components/UserQuery'
-
+import PromoCode from './components/PromoCode/PromoCode'
+import CreatePromo from './components/PromoCode/CreatePromo'
+import EditCode from './components/PromoCode/EditCode'
+import Review from './components/Review'
+import Terms from './components/Terms'
+import Privacy from './components/Privacy'
+import Push from './components/PushNotification/Push'
+import Support from './components/Support/Support'
 const App = () => {
   return (
     <>
@@ -51,6 +58,15 @@ const App = () => {
           <Route path="subscribe/active" element={<Active />} />
           <Route path="earning" element={<Earning />} />
           <Route path="userquery" element={<UserQuery />} />
+          <Route path="promocode" element={<PromoCode />} />
+          <Route path="promocode/createpromo" element={<CreatePromo />} />
+          <Route path="promocode/editcode" element={<EditCode />} />
+          <Route path="review" element={<Review />} />
+          <Route path="terms" element={<Terms />} />
+          <Route path="privacy" element={<Privacy />} />
+          <Route path="push" element={<Push />} />
+          <Route path="support" element={<Support />} />
+
 
 
         </Route>
