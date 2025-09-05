@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-
+import { Plus } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 const UsersPage = () => {
   const [activeTab, setActiveTab] = useState("all");
+  const navigate = useNavigate();
 
   const tabs = [
     { id: "all", label: "All Users", count: 840 },
@@ -53,14 +55,43 @@ const UsersPage = () => {
   };
 
   return (
-    <div style={{fontFamily:'Poppins'}} className="p-4">
+    <div style={{ fontFamily: 'Poppins' }} className="">
       {/* Top Bar */}
-      <div className="flex justify-between items-center mb-6">
+      {/* <div className="flex gap-4 items-center mb-6">
         <h1 className="text-xl font-semibold">Users</h1>
-        <button className="bg-gray-200 px-4 py-2 rounded-lg shadow hover:bg-gray-300">
-          Add A New User
+        <button onClick={() => navigate('/dashboard/subscribe/addsubscribe')} className="flex items-center gap-2 px-4 py-2 bg-white rounded-md text-sm font-medium border shadow-md
+  hover:bg-[#8A1538] hover:text-white transition-colors duration-200">
+          Add A New User <Plus size={16} />
         </button>
+      </div> */}
+      <div className="flex items-center justify-between mb-6">
+      {/* Left Section */}
+      <div>
+        <div className="flex items-center gap-3">
+          <h1 className="text-lg font-semibold">Users</h1>
+          <button
+            onClick={() => navigate("/dashboard/users/newuser")}
+            className="flex items-center gap-2 px-4 py-2 bg-white rounded-md text-sm font-medium border shadow-md hover:bg-[#8A1538] hover:text-white transition-colors duration-200"
+          >
+            Add a New User <Plus size={16} />
+          </button>
+        </div>
+        <p className="text-xs mt-2 text-gray-500">
+          Users layout is in step & query based on the printing and typesetting
+          industry.
+        </p>
       </div>
+
+      {/* Right Section */}
+      <div className="flex items-center gap-3">
+        <select className="border rounded-md px-3 py-2 text-sm shadow-md">
+          <option>Download</option>
+        </select>
+        <select className="border rounded-md px-3 py-2 text-sm shadow-md">
+          <option>All</option>
+        </select>
+      </div>
+    </div>
 
       {/* Tabs */}
       <div className="flex whitespace-nowrap space-x-6 mb-6 border-b border-gray-200">
@@ -68,19 +99,17 @@ const UsersPage = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center pb-2 text-sm font-medium relative ${
-              activeTab === tab.id
+            className={`flex items-center pb-2 text-sm font-medium relative ${activeTab === tab.id
                 ? "text-[#8A1538] border-b-2 border-[#8A1538]"
                 : "text-gray-600"
-            }`}
+              }`}
           >
             {tab.label}
             <span
-              className={`ml-2 text-xs px-2 py-0.5 rounded-full ${
-                activeTab === tab.id
+              className={`ml-2 text-xs px-2 py-0.5 rounded-full ${activeTab === tab.id
                   ? "bg-pink-100 text-[#8A1538]"
                   : "bg-gray-100 text-gray-600"
-              }`}
+                }`}
             >
               {tab.count}
             </span>

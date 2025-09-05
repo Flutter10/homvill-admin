@@ -30,6 +30,7 @@ import Terms from './components/Terms'
 import Privacy from './components/Privacy'
 import Push from './components/PushNotification/Push'
 import Support from './components/Support/Support'
+import NewUser from './components/NewUser'
 const App = () => {
   return (
     <>
@@ -66,6 +67,7 @@ const App = () => {
           <Route path="privacy" element={<Privacy />} />
           <Route path="push" element={<Push />} />
           <Route path="support" element={<Support />} />
+          <Route path="users/newuser" element={<NewUser />} />
 
 
 

@@ -1,16 +1,7 @@
 import React from "react";
 import totalUsersImg from "../components/assets/group3.svg"; // Replace with your left image
 import listedStatesImg from "../components/assets/frame.svg"; // Replace with your right image
-// import {
-//   Chart as ChartJS,
-//   CategoryScale,
-//   LinearScale,
-//   BarElement,
-//   Tooltip,
-//   Legend,
-// } from "chart.js";
-// import { Bar } from "react-chartjs-2";
-// import { FiEdit, FiTrash } from "react-icons/fi";
+
 import { FaUser, FaHome, FaLayerGroup } from "react-icons/fa";
 import { BsGraphUp } from "react-icons/bs";
 import { FiTrash2 } from "react-icons/fi";
@@ -19,34 +10,13 @@ import wallet from './assets/wallet.svg'
 import head from './assets/head.svg'
 import bag from './assets/bag.svg'
 import table from './assets/table.svg'
+import { useNavigate } from 'react-router-dom';
+
 // ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const Dashboard = () => {
-  // const stats = [
-  //   { title: "Earnings", value: "$23,425", change: "+20%", color: "bg-green-100", textColor: "text-green-600" },
-  //   { title: "Users", value: "840", change: "-20%", color: "bg-orange-100", textColor: "text-orange-600" },
-  //   { title: "Properties", value: "412", change: "-20%", color: "bg-pink-100", textColor: "text-pink-600" },
-  //   { title: "Category", value: "9", change: "-20%", color: "bg-purple-100", textColor: "text-purple-600" },
-  // ];
-
-  // const users = [
-  //   { name: "Jenny Wilson", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-  //   { name: "Albert Flores", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-  //   { name: "Marvin McKinney", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-  //   { name: "Sharyn Honey", date: "Dec 18, 2024", email: "example@gmail.com", id: "7452031", img: "https://via.placeholder.com/30" },
-  // ];
-
-  // const chartData = {
-  //   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-  //   datasets: [
-  //     {
-  //       label: "Earnings",
-  //       data: [5, 10, 12, 20, 25, 35, 50, 45, 60, 80, 65, 85],
-  //       backgroundColor: "#f9c5d1",
-  //       borderRadius: 6,
-  //     },
-  //   ],
-  // };
+      const navigate = useNavigate();
+  
   const data = [
     { name: "Jan", earning: 8000 },
     { name: "Feb", earning: 12000 },
@@ -115,7 +85,7 @@ const Dashboard = () => {
             <div className="grid grid-cols-4 gap-4">
               {/* Earnings Card */}
               <div className="p-4 bg-white shadow rounded-lg border border-[#8A1538]">
-                <div className="flex flex-col items-start">
+                <div onClick={() => navigate('/dashboard/earning')} className="flex flex-col cursor-pointer items-start">
                   <div className="bg-[#DFFBEF] p-2 rounded-lg inline-flex items-center justify-center mb-2">
                     <img src={wallet} alt="wallet" className="w-6 h-6" />
                   </div>
@@ -132,7 +102,7 @@ const Dashboard = () => {
 
               {/* Users Card */}
               <div className="p-4 bg-white shadow rounded-lg border border-[#8A1538]">
-                <div className="flex flex-col items-start">
+                <div onClick={() => navigate('/dashboard/users')} className="flex flex-col cursor-pointer items-start">
                   <div className="bg-[#FFF2E2] p-2 rounded-lg inline-flex items-center justify-center mb-2">
                     <img src={head} alt="wallet" className="w-6 h-6" />
 
@@ -150,7 +120,7 @@ const Dashboard = () => {
 
               {/* Properties Card */}
               <div className="p-4 bg-white shadow rounded-lg border border-[#8A1538]">
-                <div className="flex flex-col items-start">
+                <div onClick={() => navigate('/dashboard/properties')}  className="flex flex-col cursor-pointer items-start">
                   <div className="bg-[#FCE4EC] p-2 rounded-lg inline-flex items-center justify-center mb-2">
                     <img src={bag} alt="wallet" className="w-6 h-6" />
 
@@ -168,7 +138,7 @@ const Dashboard = () => {
 
               {/* Category Card */}
               <div className="p-4 bg-white shadow rounded-lg border border-[#8A1538]">
-                <div className="flex flex-col items-start">
+                <div onClick={() => navigate('/dashboard/properties')}  className="flex cursor-pointer flex-col items-start">
                   <div className="bg-[#EDE7F6] p-2 rounded-lg inline-flex items-center justify-center mb-2">
                     <img src={table} alt="wallet" className="w-6 h-6" />
 

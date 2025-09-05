@@ -58,14 +58,14 @@ export default function AdminLayout() {
   return (
     <div style={{fontFamily:'Poppins'}} className="flex h-screen font-sans">
       {/* Sidebar */}
-      <div className="w-64 bg-gray-50 border-r border-[#8A1538] flex flex-col">
+      <div className="w-60 bg-gray-50 border-r border-[#8A1538] flex flex-col">
         {/* Logo */}
         <div className="p-6 flex items-center justify-center">
           <img src={logo} alt="Logo" className="w-32" />
         </div>
 
         {/* Menu */}
-        <ul className="flex-1 py-4 space-y-1 m-4 overflow-y-auto hide-scrollbar">
+        <ul className="flex-1 py-4 space-y-1 m-2 overflow-y-auto hide-scrollbar">
           {menuItems.map((item, index) => {
             const isActive =
               item.path === "/dashboard/home"

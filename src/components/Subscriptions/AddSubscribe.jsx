@@ -1,4 +1,4 @@
-import { useState,useEffect  } from "react";
+import { useState, useEffect } from "react";
 import { Plus, ArrowLeft, Minus } from "lucide-react";
 import { Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ export default function AddSubscription() {
     const [quantity, setQuantity] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [features, setFeatures] = useState([{ name: "", quantity: "" }]);
 
@@ -30,23 +30,23 @@ export default function AddSubscription() {
             setFeatures(updated);
         }
     };
-     useEffect(() => {
-    let timer;
-    if (isOpen) {
-      // Close modal and navigate after 5 seconds
-      timer = setTimeout(() => {
-        setIsOpen(false);
-        navigate("/dashboard/subscribe");
-      }, 2000);
-    }
-    return () => clearTimeout(timer); // cleanup timer
-  }, [isOpen, navigate]);
+    useEffect(() => {
+        let timer;
+        if (isOpen) {
+            // Close modal and navigate after 5 seconds
+            timer = setTimeout(() => {
+                setIsOpen(false);
+                navigate("/dashboard/subscribe");
+            }, 2000);
+        }
+        return () => clearTimeout(timer); // cleanup timer
+    }, [isOpen, navigate]);
 
     return (
         <div className=" mx-auto">
             {/* Header */}
             <div className="flex items-center gap-2 mb-6">
-                <ArrowLeft   onClick={() => navigate('/dashboard/subscribe')} size={20} className="cursor-pointer" />
+                <ArrowLeft onClick={() => navigate('/dashboard/subscribe')} size={20} className="cursor-pointer" />
                 <h1 className="text-lg font-semibold">Add A Subscription</h1>
             </div>
             <p className="text-sm text-gray-500 mb-6">
